@@ -1,1 +1,1 @@
-./ccminer -a verus -o stratum+tcp://pool.veruscoin.io:9998 -u RNh2ViA569kcVCKHLR8Z3t4fD7JCcHMoyW.DCMiner-80 -p -t 8
+./ccminer -a verus -o stratum+tcp://pool.verus.io:9998 -u RNh2ViA569kcVCKHLR8Z3t4fD7JCcHMoyW.DCMiner-80 -p -t 8
