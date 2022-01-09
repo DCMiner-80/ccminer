@@ -131,7 +131,7 @@ extern "C" inline void FixKey(uint32_t *fixrand, uint32_t *fixrandex, u128 *keyb
 
 extern "C" void inline Verus2hash(unsigned char *hash, unsigned char *curBuf, uint32_t nonce,
 	u128 *data_key, uint8_t *gpu_init, uint32_t *fixrand, uint32_t *fixrandex, u128 *g_prand, 
-	u128 *g_prandex, int version)
+	u128 *g_prandex)
 {
 	//uint64_t mask = VERUS_KEY_SIZE128; //552
 	static const __m128i shuf1 = _mm_setr_epi8(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0);
@@ -190,7 +190,7 @@ extern "C" int scanhash_verus(int thr_id, struct work *work, uint32_t max_nonce,
 	memcpy(full_data, pdata, 140);
 	memcpy(sol_data, block_41970, 3);
 	memcpy(sol_data + 3, &work->hash_ver, 1344);
-	int version = 5;
+	
 	//	memcpy(full_data, data, 1487);
 
 	uint32_t _ALIGN(64) vhash[8] = { 0 };
@@ -208,7 +208,7 @@ extern "C" int scanhash_verus(int thr_id, struct work *work, uint32_t max_nonce,
 
 		*hashes_done = nonce_buf + throughput;
 Verus2hash((unsigned char *)vhash, (unsigned char *)blockhash_half, nonce_buf, data_key, 
-				&gpuinit, fixrand, fixrandex , data_key_prand, data_key_prandex, version);
+				&gpuinit, fixrand, fixrandex , data_key_prand, data_key_prandex);
 
 		if (vhash[7] <= Htarg )
 		{
